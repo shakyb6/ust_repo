@@ -1,3 +1,5 @@
+package com.ust.empapp.model;
+
 public class Developer extends Employee{
     String programmingLanguage;
 
@@ -7,7 +9,7 @@ public class Developer extends Employee{
     }
 
     @Override
-    void displayDetails() {
+    public void displayDetails() {
         System.out.println("Employee Details :\nName :"+ name +"\nEmployee ID :"+ employeeID +"\nSalary :"+ salary +"\nProgramming Language :"+ programmingLanguage+"\n");
     }
 }
