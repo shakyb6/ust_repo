@@ -31,10 +31,8 @@ public class Main {
 
         System.out.println("Employee list After Deletion\n");
 
-        for(int i = 0; i < EmployeeRepositoryImpl.current; i++){
-            if(emps[i] != null){
-                emps[i].displayDetails();
+        for(Employee employee: emps){
+            System.out.println(emps);
             }
         }
     }
-}
