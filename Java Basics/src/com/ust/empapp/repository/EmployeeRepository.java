@@ -13,11 +13,16 @@ public interface EmployeeRepository {
 
     List<Employee> getAllEmployees();
 
-//    Employee findEmployeeByName(String name);
-//
-//    List<Employee> findEmployeeInSalaryRange(double min, double max);
-//
-//    List<Employee> sortBySalary();
-//
-//    Employee findHighestPaidEmployee();
+    Employee findEmployeeByName(String name);
+
+    List<Employee> findEmployeeInSalaryRange(double min, double max);
+
+    List<Employee> sortBySalary();
+
+    List<Employee> sortByName();
+
+
+    Employee findHighestPaidEmployee();
+
+
 }
