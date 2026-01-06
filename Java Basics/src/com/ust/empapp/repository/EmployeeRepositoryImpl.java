@@ -1,4 +1,6 @@
 package com.ust.empapp.repository;
+import com.ust.empapp.exception.DuplicateEmployeeException;
+import com.ust.empapp.exception.EmployeeNotFoundException;
 import com.ust.empapp.model.Employee;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     List<Employee> employees = new ArrayList<>();
 
     public void saveEmployee(Employee employee) {
+        for (Employee emp: employees){
+            if(employee.getEmployeeID() == emp.getEmployeeID()){
+                throw new DuplicateEmployeeException("Employee with ID: "+employee.getEmployeeID()+" is already exists");
+            }
+        }
         employees.add(employee);
     }
 
@@ -18,9 +25,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 //                return employee;
 //            }
 //        }
-//        return null;
+//        throw new EmployeeNotFoundException("Employee With ID: "+id+" Not Found");
+
+
         Employee emp = employees.stream().filter(n-> n.getEmployeeID() == id)
-                .findFirst().orElse(null);
+                .findFirst().orElseThrow(()->new EmployeeNotFoundException("Employee With ID: "+id+" Not Found"));
 
         return emp;
     }
